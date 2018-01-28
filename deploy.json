@@ -223,14 +223,14 @@
             "metadata": {
                 "description": "Linked Templates base url"
             },
-            "defaultValue": "https://gioso.github.io/AzureHA"
+            "defaultValue": "https://gioso.github.io/AzureHA2"
         },
         "scriptsBaseUrl": {
             "type": "string",
             "metadata": {
                 "description": "DSC Scripts base url"
             },
-            "defaultValue": "https://gioso.github.io/AzureHA"
+            "defaultValue": "https://gioso.github.io/AzureHA2"
         },
         "autoPatchingDay": {
             "type": "string",
