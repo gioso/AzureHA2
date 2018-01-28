@@ -494,13 +494,13 @@
                         "value": "[parameters('set1StorageAccountName')]"
                     },
                     "set2StorageAccountName": {
-                        "value": "[variables('set2StorageAccountName')]"
+                        "value": "[parameters('set2StorageAccountName')]"
                     },
                     "SqlStorageAccountType": {
                         "value": "[parameters('set1StorageAccountType')]"
                     },
                     "DcStorageAccountType": {
-                        "value": "[variables('set2StorageAccountType')]"
+                        "value": "[parameters('set2StorageAccountType')]"
                     },
                     "primaryDCIPAddressNameWithSuffix": {
                         "value": "[variables('primaryDCIPAddressNameWithSuffix')]"
