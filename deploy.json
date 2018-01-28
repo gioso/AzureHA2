@@ -54,11 +54,12 @@
             "metadata": {
                 "description": "The size of the AD VMs Created"
             },
-            "defaultValue": "Standard_D1"
+            "defaultValue": "Standard_DS2_v2"
         },
         "sqlVMSize": {
             "type": "string",
             "allowedValues": [
+				"Standard_D2_v2",
                 "Standard_DS2",
                 "Standard_DS3",
                 "Standard_DS4",
@@ -79,7 +80,7 @@
             "metadata": {
                 "description": "The size of the SQL VMs Created"
             },
-            "defaultValue": "Standard_DS4_v2"
+            "defaultValue": "Standard_DS2_v2"
         },
         "witnessVMSize": {
             "type": "string",
@@ -91,6 +92,7 @@
                 "Standard_DS12",
                 "Standard_DS13",
                 "Standard_DS14",
+				"Standard_DS1_v2",
                 "Standard_DS2_v2",
                 "Standard_DS3_v2",
                 "Standard_DS4_v2",
@@ -111,14 +113,14 @@
             "metadata": {
                 "description": "The FQDN of the AD Domain created "
             },
-            "defaultValue": "contoso.local"
+            "defaultValue": "platform.local"
         },
         "sqlServerServiceAccountUserName": {
             "type": "string",
             "metadata": {
                 "description": "The SQL Server Service Account name"
             },
-            "defaultValue": "sqlservice"
+            "defaultValue": "sqlclusteradmin"
         },
         "sqlServerServiceAccountPassword": {
             "type": "securestring",
@@ -126,77 +128,95 @@
                 "description": "The SQL Server Service Account password"
             }
         },
-        "sqlStorageAccountName": {
+        "set1StorageAccountName": {
             "type": "string",
             "metadata": {
                 "description": "The name of Sql Server Storage Account"
             }
         },
-        "sqlStorageAccountType": {
+        "set1StorageAccountType": {
             "type": "string",
             "allowedValues": [
-                "Premium_LRS"
+                "Premium_LRS",
+				"Standard_LRS"
             ],
             "metadata": {
                 "description": "The type of the Sql Server Storage Account created"
             },
-            "defaultValue": "Premium_LRS"
+            "defaultValue": "Standard_LRS"
+        },
+		"set2StorageAccountName":  {
+            "type": "string",
+            "metadata": {
+                "description": "The name of DC Server Storage Account"
+            }
+        },
+        "set2StorageAccountType": {
+            "type": "string",
+            "allowedValues": [
+                "Premium_LRS",
+				"Standard_LRS"
+            ],
+            "metadata": {
+                "description": "The type of the DC Server Storage Account created"
+            },
+            "defaultValue": "Standard_LRS"
         },
         "virtualNetworkAddressRange": {
             "type": "string",
             "metadata": {
                 "description": "The address range of the new VNET in CIDR format"
             },
-            "defaultValue": "10.0.0.0/16"
+            "defaultValue": "10.0.40.0/24"
         },
         "staticSubnet": {
             "type": "string",
             "metadata": {
                 "description": "The address range of the subnet static IPs are allocated from in the new VNET"
             },
-            "defaultValue": "10.0.0.0/24"
+            "defaultValue": "10.0.40.0/27"
         },
         "sqlSubnet": {
             "type": "string",
             "metadata": {
                 "description": "The address range of the SQL subnet created in the new VNET"
             },
-            "defaultValue": "10.0.1.0/26"
+            "defaultValue": "10.0.40.32/27"
         },
         "adPDCNICIPAddress": {
             "type": "string",
             "metadata": {
                 "description": "The IP address of the new AD VM"
             },
-            "defaultValue": "10.0.0.4"
+            "defaultValue": "10.0.40.4"
         },
         "adBDCNICIPAddress": {
             "type": "string",
             "metadata": {
                 "description": "The IP address of the new backup AD VM"
             },
-            "defaultValue": "10.0.0.5"
+            "defaultValue": "10.0.40.5"
         },
         "sqlLBIPAddress": {
             "type": "string",
             "metadata": {
                 "description": "The IP address of the new SQL Server Internal Load Balancer"
             },
-            "defaultValue": "10.0.1.9"
+            "defaultValue": "10.0.40.40"
         },
         "deploymentPrefix": {
             "type": "string",
             "metadata": {
                 "description": "The DNS Prefix for the Public IP Address for the Always On Cluster"
             },
-            "defaultValue": "aodns"
+            "defaultValue": "clusterIP"
         },
         "virtualNetworkName": {
             "type": "string",
             "metadata": {
                 "description": "Name of virtual network to be created"
             },
-            "defaultValue": "autohav2VNET"
+            "defaultValue": "VNET"
         },
         "templatesBaseUrl": {
             "type": "string",
@@ -228,7 +248,7 @@
             "metadata": {
                 "description": "The day of a week for auto patching"
             },
-            "defaultValue": "Sunday"
+            "defaultValue": "Never"
         },
         "autoPatchingStartHour": {
             "type": "string",
@@ -268,7 +288,7 @@
             "metadata": {
                 "description": "The Sql AlwaysOn Group Name"
             },
-            "defaultValue": "alwayson-ag"
+            "defaultValue": "name-ag"
         },
         "sqlAOListenerPort": {
             "type": "string",
@@ -282,7 +302,7 @@
             "metadata": {
                 "description": "The Sql AG Listener Name"
             },
-            "defaultValue": "alwayson-ag-listener"
+            "defaultValue": "name-ag-listener"
         },
         "sqlServerVersion": {
             "type": "string",
@@ -295,20 +315,25 @@
             "metadata": {
                 "description": "The Sql Server Version"
             },
-            "defaultValue": "SQL2014SP2-WS2012R2"
+            "defaultValue": "SQL2016-WS2012R2-DEV"
         },
         "numberOfSqlVMDisks": {
             "type": "string",
             "allowedValues": [
                 "1",
-                "2",
-                "3",
-                "4"
+                "2"
             ],
             "metadata": {
                 "description": "The Sql VM Disk Size"
             },
-            "defaultValue": "2"
+            "defaultValue": "1"
+        },
+		"SizeSqlDsik": {
+            "type": "string",
+            "metadata": {
+                "description": "Set Size of SQL disk (for premium:128,512,1024)"
+            },
+            "defaultValue": "128"
         },
         "workloadType": {
             "type": "string",
@@ -366,7 +391,7 @@
             "sqlImagePublisher": "MicrosoftSQLServer",
             "rdpPort": 3389,
             "windowsDiskSize": 128,
-            "sqlDiskSize": 1000
+            "sqlDiskSize": "[concat(parameters('SizeSqlDsik')]"
         },
         "sqlAOEPName": "[concat(parameters('deploymentPrefix'),'-hadr')]",
         "sharePath": "[concat(parameters('deploymentPrefix'),'-fsw')]",
@@ -420,13 +445,11 @@
                 }
             }
         ],
-        "virtualNetworkNameWithSuffix": "[substring(concat(parameters('virtualNetworkName'), uniqueString(parameters('sqlStorageAccountName'))),0,15)]",
-        "primaryDCIPAddressNameWithSuffix": "[substring(concat(variables('primaryDCIPAddressName'), uniqueString(parameters('sqlStorageAccountName'))),0,15)]",
-        "backupDCIPAddressNameWithSuffix": "[substring(concat(variables('backupDCIPAddressName'), uniqueString(parameters('sqlStorageAccountName'))),0,15)]",
-        "sql1AddressNameWithSuffix": "[substring(concat(variables('sql1AddressName'), uniqueString(parameters('sqlStorageAccountName'))),0,15)]",
-        "sql0AddressNameWithSuffix": "[substring(concat(variables('sql0AddressName'), uniqueString(parameters('sqlStorageAccountName'))),0,15)]",
-        "dcStorageAccountName": "[concat(substring(concat(parameters('sqlStorageAccountName'), uniqueString(parameters('sqlStorageAccountName'))),0,18),'dc')]",
-        "dcStorageAccountType": "Standard_LRS",
+        "virtualNetworkNameWithSuffix": "[substring(concat(parameters('virtualNetworkName'), uniqueString(parameters('set1StorageAccountName'))),0,15)]",
+        "primaryDCIPAddressNameWithSuffix": "[substring(concat(variables('primaryDCIPAddressName'), uniqueString(parameters('set1StorageAccountName'))),0,15)]",
+        "backupDCIPAddressNameWithSuffix": "[substring(concat(variables('backupDCIPAddressName'), uniqueString(parameters('set1StorageAccountName'))),0,15)]",
+        "sql1AddressNameWithSuffix": "[substring(concat(variables('sql1AddressName'), uniqueString(parameters('set1StorageAccountName'))),0,15)]",
+        "sql0AddressNameWithSuffix": "[substring(concat(variables('sql0AddressName'), uniqueString(parameters('set1StorageAccountName'))),0,15)]",
         "configuration": {
             "vnetwithDNSTemplateURL": "[concat(parameters('templatesBaseUrl'),'/vnet-with-dns-server.json')]",
             "nicTemplateURL": "[concat(parameters('templatesBaseUrl'),'/nic.json')]",
@@ -467,17 +490,17 @@
                     "location": {
                         "value": "[resourceGroup().location]"
                     },
-                    "sqlStorageAccountName": {
-                        "value": "[parameters('sqlStorageAccountName')]"
+                    "set1StorageAccountName": {
+                        "value": "[parameters('set1StorageAccountName')]"
                     },
-                    "dcStorageAccountName": {
-                        "value": "[variables('dcStorageAccountName')]"
+                    "set2StorageAccountName": {
+                        "value": "[variables('set2StorageAccountName')]"
                     },
                     "SqlStorageAccountType": {
-                        "value": "[parameters('sqlStorageAccountType')]"
+                        "value": "[parameters('set1StorageAccountType')]"
                     },
                     "DcStorageAccountType": {
-                        "value": "[variables('dcStorageAccountType')]"
+                        "value": "[variables('set2StorageAccountType')]"
                     },
                     "primaryDCIPAddressNameWithSuffix": {
                         "value": "[variables('primaryDCIPAddressNameWithSuffix')]"
@@ -639,11 +662,11 @@
                     "sqlAvailabilitySetName": {
                         "value": "[variables('vmSettings').availabilitySets.sqlAvailabilitySetName]"
                     },
-                    "sqlStorageAccountName": {
-                        "value": "[parameters('sqlStorageAccountName')]"
+                    "set1StorageAccountName": {
+                        "value": "[parameters('set1StorageAccountName')]"
                     },
-                    "dcStorageAccountName": {
-                        "value": "[variables('dcStorageAccountName')]"
+                    "set2StorageAccountName": {
+                        "value": "[variables('set2StorageAccountName')]"
                     },
                     "location": {
                         "value": "[resourceGroup().location]"

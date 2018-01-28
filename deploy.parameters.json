@@ -26,11 +26,17 @@
         "sqlServerServiceAccountPassword": {
             "value": null
         },
-        "sqlStorageAccountName": {
+        "set1StorageAccountName": {
             "value": "123accountname456"
         },
-        "sqlStorageAccountType": {
-            "value": "Premium_LRS"
+        "set1StorageAccountType": {
+            "value": "Standard_LRS"
+        },
+		"set2StorageAccountName":  {
+            "value": "454accountname454"
+        },
+        "set2StorageAccountType": {
+            "value": "Standard_LRS"
         },
         "virtualNetworkName": {
             "value": "autohaVNET"
@@ -58,6 +64,9 @@
         },
         "workloadType": {
             "value": "GENERAL"
-        }
+        },
+		"SizeSqlDsik": {
+			"value": "128"
+		}
     }
 }
