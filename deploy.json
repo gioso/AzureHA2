@@ -913,7 +913,7 @@
                         "value": "[resourceGroup().location]"
                     },
                     "nicName": {
-                        "value": "[concat(variables('vmSettings').sqlVMName, '0-nic')]"
+                        "value": "[concat(variables('vmSettings').sqlVMName, '1-nic')]"
                     },
                     "ipConfigurations": {
                         "value": [
@@ -963,7 +963,7 @@
                         "value": "[resourceGroup().location]"
                     },
                     "nicName": {
-                        "value": "[concat(variables('vmSettings').sqlVMName, '1-nic')]"
+                        "value": "[concat(variables('vmSettings').sqlVMName, '2-nic')]"
                     },
                     "ipConfigurations": {
                         "value": [
