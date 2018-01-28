@@ -84,8 +84,8 @@
                     "clusterName": "[parameters('clusterName')]",
                     "sharePath": "[concat('\\\\',parameters('sqlwVMName'),'\\',parameters('sharePath'))]",
                     "nodes": [
-                        "[concat(parameters('sqlVMName'),'0')]",
-                        "[concat(parameters('sqlVMName'),'1')]"
+                        "[concat(parameters('sqlVMName'),'1')]",
+                        "[concat(parameters('sqlVMName'),'2')]"
                     ],
                     "sqlAlwaysOnEndpointName": "[parameters('sqlAOEPName')]",
                     "sqlAlwaysOnAvailabilityGroupName": "[parameters('sqlAOAGName')]",
@@ -95,7 +95,7 @@
                     "lbName": "[parameters('sqlLBName')]",
                     "lbAddress": "[parameters('sqlLBIPAddress')]",
                     "primaryReplica": "[concat(parameters('sqlVMName'),'1')]",
-                    "secondaryReplica": "[concat(parameters('sqlVMName'),'0')]",
+                    "secondaryReplica": "[concat(parameters('sqlVMName'),'2')]",
                     "dnsServerName": "[parameters('adPDCVMName')]",
                     "adminCreds": {
                         "userName": "[parameters('adminUserName')]",

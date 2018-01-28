@@ -99,7 +99,7 @@
          }
       },
       {  
-         "name":"[concat(parameters('sqlVMName'),'1-nic')]",
+         "name":"[concat(parameters('sqlVMName'),'2-nic')]",
          "type":"Microsoft.Network/networkInterfaces",
          "location":"[parameters('location')]",
          "apiVersion":"2015-06-15",
@@ -126,7 +126,7 @@
          }
       },
       {  
-         "name":"[concat(parameters('sqlVMName'),'0-nic')]",
+         "name":"[concat(parameters('sqlVMName'),'1-nic')]",
          "type":"Microsoft.Network/networkInterfaces",
          "location":"[parameters('location')]",
          "apiVersion":"2015-06-15",
