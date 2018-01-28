@@ -666,7 +666,7 @@
                         "value": "[parameters('set1StorageAccountName')]"
                     },
                     "set2StorageAccountName": {
-                        "value": "[variables('set2StorageAccountName')]"
+                        "value": "[parameters('set2StorageAccountName')]"
                     },
                     "location": {
                         "value": "[resourceGroup().location]"
