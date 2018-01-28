@@ -223,14 +223,14 @@
             "metadata": {
                 "description": "Linked Templates base url"
             },
-            "defaultValue": "https://sqlvmgroup.blob.core.windows.net/autoha07182017"
+            "defaultValue": "https://gioso.github.io/AzureHA"
         },
         "scriptsBaseUrl": {
             "type": "string",
             "metadata": {
                 "description": "DSC Scripts base url"
             },
-            "defaultValue": "https://sqlvmgroup.blob.core.windows.net/autoha07182017"
+            "defaultValue": "https://gioso.github.io/AzureHA"
         },
         "autoPatchingDay": {
             "type": "string",
@@ -391,7 +391,7 @@
             "sqlImagePublisher": "MicrosoftSQLServer",
             "rdpPort": 3389,
             "windowsDiskSize": 128,
-            "sqlDiskSize": "[concat(parameters('SizeSqlDsik')]"
+            "sqlDiskSize": "[parameters('SizeSqlDsik')]"
         },
         "sqlAOEPName": "[concat(parameters('deploymentPrefix'),'-hadr')]",
         "sharePath": "[concat(parameters('deploymentPrefix'),'-fsw')]",
