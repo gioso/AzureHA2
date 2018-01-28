@@ -94,8 +94,8 @@
                     "databaseNames": "AutoHa-sample",
                     "lbName": "[parameters('sqlLBName')]",
                     "lbAddress": "[parameters('sqlLBIPAddress')]",
-                    "primaryReplica": "[concat(parameters('sqlVMName'),'1')]",
-                    "secondaryReplica": "[concat(parameters('sqlVMName'),'2')]",
+                    "primaryReplica": "[concat(parameters('sqlVMName'),'2')]",
+                    "secondaryReplica": "[concat(parameters('sqlVMName'),'1')]",
                     "dnsServerName": "[parameters('adPDCVMName')]",
                     "adminCreds": {
                         "userName": "[parameters('adminUserName')]",
